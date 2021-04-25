@@ -29,13 +29,21 @@ if (isset($_POST['top'])) {
             $imgPreType = $_POST['imgPreType'];
             $imgTmp = $_FILES['img']['tmp_name'];
             $imgName = $_FILES['img']['name'];
-            $imgType = exif_imagetype($imgTmp);
-            if ($imgType == 2) {
+            if ($_FILES['img']['type'] == "image/jpeg") {
                 $imgType = "jpg";
-            }else if($imgType == 3){
+            }else if ($_FILES['img']['type'] == "image/png") {
                 $imgType = "png";
+            }else{
+                exit('Este formato no es admitido por el sistema.');
             }
+            // $imgType = exif_imagetype($imgTmp);
+            // if ($imgType == 2) {
+            //     $imgType = "jpg";
+            // }else if($imgType == 3){
+            //     $imgType = "png";
+            // }
             // query img
+            // $imgType="jpg";
             $peticionImg = "UPDATE top SET img='$imgType' WHERE id='$id'";
             $resultadoImg = mysqli_query($conexion,$peticionImg);
             $dest = "../productos/top-".$id.".".$imgType;
@@ -48,6 +56,7 @@ if (isset($_POST['top'])) {
             }
         }
     }
+    clearstatcache();
     // regresar a inicio
     echo '<script>
     alert("informacion Actualizada!");

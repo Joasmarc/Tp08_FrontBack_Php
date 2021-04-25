@@ -1,4 +1,5 @@
 <?php
+    clearstatcache();
     // conexion con db
     require("conexion.php");
     // sistema de seguridad
