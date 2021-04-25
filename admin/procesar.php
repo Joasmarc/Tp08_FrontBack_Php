@@ -76,12 +76,19 @@ if (isset($_POST['add'])) {
     $imgTmp = $_FILES['img']['tmp_name'];
     $imgName = $_FILES['img']['name'];
     $imgId = uniqid($categoria);
-    $imgType = exif_imagetype($imgTmp);
-    if ($imgType == 2) {
+    if ($_FILES['img']['type'] == "image/jpeg") {
         $imgType = "jpg";
-    }else if($imgType == 3){
+    }else if ($_FILES['img']['type'] == "image/png") {
         $imgType = "png";
+    }else{
+        exit('Este formato no es admitido por el sistema.');
     }
+    // $imgType = exif_imagetype($imgTmp);
+    // if ($imgType == 2) {
+    //     $imgType = "jpg";
+    // }else if($imgType == 3){
+    //     $imgType = "png";
+    // }
     $imgRoute = "../productos/$categoria/$imgId.$imgType";
     // query
     $query = "INSERT INTO categorias(nombre, categoria, mostrar, imgRoute) VALUES('$nombre', '$categoria', '$mostrar', '$imgRoute')";
