@@ -1,0 +1,9 @@
+use id11654670_productos;
+create table top(
+    id tinyint auto_increment not null,
+    nombre varchar(200) not null,
+    categoria varchar(100) not null,
+    nuevo tinyint not null,
+    img varchar(200) not null,
+    primary key(id)
+);

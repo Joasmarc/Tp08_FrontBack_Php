@@ -1,0 +1,9 @@
+use database;
+create table categorias(
+    id int(10) auto_increment not null,
+    nombre varchar(150) not null,
+    categoria varchar(100) not null,
+    mostrar tinyint not null,
+    imgRoute varchar(200) not null,
+    primary key(id)
+);

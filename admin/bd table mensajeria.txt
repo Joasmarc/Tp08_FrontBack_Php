@@ -1,0 +1,8 @@
+use id11654670_productos;
+create table mensajeria(
+    id int(12) auto_increment not null,
+    contacto varchar(150) not null,
+    motivo varchar(100) not null,
+    mensaje tinytext,
+    primary key(id)
+);
